@@ -15,12 +15,20 @@ class Game
 
     correct_position = 0
     correct_number = 0
+    code_copy = @code.dup
 
     guess.each_with_index do |num, index|
-      if num == @code[index]
-        correct_position += 1
-      elsif @code.include?(num)
+      next unless num == code_copy[index]
+
+      correct_position += 1
+      code_copy[index] = nil
+      guess[index] = nil
+
+      next if num.nil?
+
+      if code_copy.include?(num)
         correct_number += 1
+        code_copy[code_copy.index(num)] = nil
       end
     end
 
