@@ -17,10 +17,10 @@ until game_over
   input = gets.chomp
 
   # Validate
-  if input.match?(/^\d{4}$/)
+  if input.match?(/^[1-6]{4}$/)
     guess = input.chars.map(&:to_i)
   else
-    puts 'Invalid input! Please enter only numbers'
+    puts 'Invalid input! Please enter a valid 4-digit number using digits 1-6 only'
     next
   end
 

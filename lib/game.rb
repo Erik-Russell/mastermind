@@ -24,7 +24,10 @@ class Game
     puts "You got #{correct_number} digit(s) correct but in the wrong position"
     puts "You have #{12 - @turns} turns left"
 
-    return true if correct_position == 4
+    if correct_position == 4
+      puts "Congratulations! You've guessed the correct code: #{@code.join}."
+      return true
+    end
 
     if @turns >= 12
       puts "Sorry, you've run out of turns! the code was #{@code.join}."
