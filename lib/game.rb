@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+# lib/game.rb
+
+require_relative 'game_logic'
+
 # Game - logic of game
 class Game
   attr_reader :code
@@ -10,29 +14,11 @@ class Game
   end
 
   def play_turn(guess)
-    puts "for test code:#{@code}"
     @turns += 1
-
-    correct_position = 0
-    correct_number = 0
     code_copy = @code.dup
 
-    guess.each_with_index do |num, index|
-      next unless num == code_copy[index]
-
-      correct_position += 1
-      code_copy[index] = nil
-      guess[index] = nil
-    end
-
-    guess.each_with_index do |num, index|
-      next if num.nil?
-
-      if code_copy.include?(num)
-        correct_number += 1
-        code_copy[code_copy.index(num)] = nil
-      end
-    end
+    correct_position = GameLogic.correct_positions(guess, code_copy)
+    correct_number = GameLogic.correct_numbers(guess, code_copy)
 
     puts "You got #{correct_position} digit(s) in the correct position"
     puts "You got #{correct_number} digit(s) correct but in the wrong position"
