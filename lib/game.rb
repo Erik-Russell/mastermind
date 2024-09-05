@@ -23,7 +23,9 @@ class Game
       correct_position += 1
       code_copy[index] = nil
       guess[index] = nil
+    end
 
+    guess.each_with_index do |num, index|
       next if num.nil?
 
       if code_copy.include?(num)
