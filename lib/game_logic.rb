@@ -30,4 +30,11 @@ module GameLogic
 
     correct_number
   end
+
+  def self.valid_code(number)
+    return true if number.match?(/^[1-6]{4}$/)
+
+    puts 'Invalid code! Enter a valid 4-digit number'
+    puts "\tonly use digits 1 -- 6"
+  end
 end
