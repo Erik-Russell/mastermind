@@ -2,6 +2,7 @@
 
 # lib/game_logic.rb
 
+# GameLogic - behind the scenes
 module GameLogic
   def self.correct_positions(guess, code_copy)
     correct_position = 0
